@@ -1,20 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { LocationStrategy, HashLocationStrategy, APP_BASE_HREF } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 import { ArtistComponent } from './artist/artist.component';
 import { TrackComponent } from './track/track.component';
 import { AlbumComponent } from './album/album.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { SpotifyService } from './spotify.service';
+import { HttpModule } from '@angular/http';
+
 
 const routes: Routes = [
-  {path: '', redirectTo: 'search', pathMatch: 'full'},
-  {path: 'search', component: SearchComponent},
-  {path: 'artists/:id', component: ArtistComponent},
-  {path: 'tracks/:id', component: TrackComponent},
-  {path: 'albums/:id', component: AlbumComponent}
+  { path: '', redirectTo: 'search', pathMatch: 'full' },
+  { path: 'search', component: SearchComponent },
+  { path: 'artists/:id', component: ArtistComponent },
+  { path: 'tracks/:id', component: TrackComponent },
+  { path: 'albums/:id', component: AlbumComponent }
 ];
 
 
@@ -28,10 +31,13 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: SpotifyService, useClass: SpotifyService },
+    { provide: APP_BASE_HREF, useValue: '/' }
   ],
   bootstrap: [AppComponent]
 })

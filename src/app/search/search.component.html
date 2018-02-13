@@ -1,73 +1,28 @@
 <div class="form-inline justify-content-center mb-3">
-    <input class="form-control form-control-lg w-75" type="text" placeholder="enter song title or artist name...">
-    <button class="btn btn-primary btn-lg ml-3" type="button">Search</button>
+  <input type="search" #newquery [value]="query" (keydown.enter)="submit(newquery.value)" class="form-control form-control-lg w-75"
+    placeholder="enter song title or artist name...">
+  <button (click)="submit(newquery.value)" class="btn btn-primary btn-lg ml-3" type="button">Search</button>
 </div>
 
-<div class="row">
+<div *ngIf="results">
+  <p *ngIf="!results.length">
+    No results were found for the query '{{ query }}'.
+  </p>
 
-<div class="col-3">
-  <div class="card mb-3">
-    <img class="card-img-top" src="http://via.placeholder.com/250x250" alt="Album art">
-    <div class="card-body">
-      <h5 class="card-title">Track title</h5>
-      <p class="card-text">
-        Artist name
-        <br/> Album name
-      </p>
+  <div class="row" *ngIf="results.length">
+
+    <div class="col-3 mb-3" *ngFor="let track of results">
+      <div class="card h-100">
+        <img class="card-img-top" src="{{ track.album.images[0].url }}" alt="{{track.album.name}} cover art">
+        <div class="card-body">
+          <h5 class="card-title">{{track.name}}</h5>
+          <p class="card-text">
+            {{track.artists[0].name}}
+            <br/> {{track.album.name}}
+          </p>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="col-3">
-  <div class="card mb-3">
-    <img class="card-img-top" src="http://via.placeholder.com/250x250" alt="Album art">
-    <div class="card-body">
-      <h5 class="card-title">Track title</h5>
-      <p class="card-text">
-        Artist name
-        <br/> Album name
-      </p>
-    </div>
   </div>
-</div>
-
-<div class="col-3">
-  <div class="card mb-3">
-    <img class="card-img-top" src="http://via.placeholder.com/250x250" alt="Album art">
-    <div class="card-body">
-      <h5 class="card-title">Track title</h5>
-      <p class="card-text">
-        Artist name
-        <br/> Album name
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="col-3 mb-3">
-  <div class="card">
-    <img class="card-img-top" src="http://via.placeholder.com/250x250" alt="Album art">
-    <div class="card-body">
-      <h5 class="card-title">Track title</h5>
-      <p class="card-text">
-        Artist name
-        <br/> Album name
-      </p>
-    </div>
-  </div>
-</div>
-
-<div class="col-3 mb-3">
-  <div class="card">
-    <img class="card-img-top" src="http://via.placeholder.com/250x250" alt="Album art">
-    <div class="card-body">
-      <h5 class="card-title">Track title</h5>
-      <p class="card-text">
-        Artist name
-        <br/> Album name
-      </p>
-    </div>
-  </div>
-</div>
-
 </div>
