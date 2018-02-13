@@ -15,10 +15,13 @@
       <div class="card h-100">
         <img class="card-img-top" src="{{ track.album.images[0].url }}" alt="{{track.album.name}} cover art">
         <div class="card-body">
-          <h5 class="card-title">{{track.name}}</h5>
+          <h5 class="card-title">
+            <a [routerLink]="['/tracks', track.id]" >{{track.name}}</a>
+            </h5>
           <p class="card-text">
-            {{track.artists[0].name}}
-            <br/> {{track.album.name}}
+            <a [routerLink]="['/artists', track.artists[0].id]" >{{track.artists[0].name}}</a>
+            <br/> 
+            <a [routerLink]="['/albums', track.album.id]" >{{track.album.name}}</a>
           </p>
         </div>
       </div>
