@@ -8,6 +8,9 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
+    "getSpotifyToken": "node scripts/spotifyKey.js",
+    "prestart": "npm run getSpotifyToken",
+    "pree2e": "npm run getSpotifyToken",
     "e2e": "ng e2e"
   },
   "private": true,
@@ -22,7 +25,9 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "bootstrap": "^4.0.0",
+    "btoa": "^1.1.2",
     "core-js": "^2.4.1",
+    "isomorphic-fetch": "^2.2.1",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.19"
   },
