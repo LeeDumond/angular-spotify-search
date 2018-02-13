@@ -1,11 +1,13 @@
-<h1>Track name</h1>
+<div *ngIf="track">
+    <h1>{{ track.name }}</h1>
 
-<p>
-    <img src="http://via.placeholder.com/300x300" alt="album name">
-</p>
+    <p>
+        <img src="{{ track.album.images[1].url }}" alt="{{ track.album.name }}">
+    </p>
 
-<p>
-    <audio controls src="#"></audio>
-  </p>
+    <p>
+        <audio controls src="{{ track.preview_url }}"></audio>
+    </p>
+</div>
 
-  <a href="">Back</a>
+<a href (click)="back()">Back</a>
