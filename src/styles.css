@@ -1,3 +1,64 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
 
+
+
+.bg-image{
+    background-image: url('assets/images/pexels-edoardo-tommasini-2034851.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat; 
+    height: 110%;
+    width: 110%;
+    z-index: 0; 
+    position: fixed;
+    filter: blur(6px);
+    background-color: transparent;
+    display: inline-block ;
+    overflow: hidden;
+
+}
+
+.content{
+    z-index: 10;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.192) !important;
+    width: 100%;
+}
+
+.card{
+    background-color: rgba(17, 9, 16, 0.753);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform .2s; /* Animation */
+}
+
+.card:hover{
+    transform: scale(1.05);
+    background-color: rgba(54, 23, 50, 0.753);
+}
+
+a.track-name{
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    color: white;
+}
+
+a.album-name, a.artist-name {
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+    color: rgb(255, 190, 246);
+}
+
+.btn-primary{
+    background-color: slateblue !important;
+    border-color: rgb(88, 47, 88);
+}
+
+.btn-primary:hover{
+    background-color: rgb(173, 113, 241) !important;
+    border-color: rgb(180, 130, 238);
+}
+
+.form-control:valid {
+    background-color:  #1d0d17be!important;
+    color: white;
+  }
